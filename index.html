@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>المصروفات والعهد للمشاريع</title>
+    <meta name="description" content="منظومة متطورة لإدارة مصروفات وعهد المشاريع مع الحفظ السحابي المباشر وقاعدة البيانات المركزية، دورة الاعتماد المتعددة المستويات، والتنبيهات الذكية وتصدير التقارير." />
+    <meta property="og:title" content="المصروفات والعهد للمشاريع" />
+    <meta property="og:description" content="منظومة متطورة لإدارة مصروفات وعهد المشاريع مع الحفظ السحابي المباشر وقاعدة البيانات المركزية، دورة الاعتماد المتعددة المستويات، والتنبيهات الذكية وتصدير التقارير." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+    <div id="root">
+      <div id="initial-app-loader" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0f172a; color: #f8fafc; font-family: 'Cairo', system-ui, sans-serif; direction: rtl; text-align: center; padding: 24px;">
+        <div style="width: 68px; height: 68px; border-radius: 22px; background: linear-gradient(135deg, #059669, #0d9488); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 30px -6px rgba(5, 150, 105, 0.45); margin-bottom: 20px;">
+          <svg style="width: 34px; height: 34px; color: #ffffff;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </div>
+        <h1 style="font-size: 20px; font-weight: 800; margin: 0 0 8px 0; color: #ffffff;">المصروفات والعهد للمشاريع</h1>
+        <p style="font-size: 13px; color: #94a3b8; margin: 0 0 24px 0;">جاري تحميل النظام وقاعدة البيانات المركزية...</p>
+        <div style="width: 36px; height: 36px; border: 3px solid rgba(16, 185, 129, 0.2); border-top-color: #10b981; border-radius: 50%; animation: initial-spin 0.8s linear infinite;"></div>
+        <div id="initial-loader-fallback" style="display: none; margin-top: 24px; max-width: 380px;">
+          <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 12px;">إذا استغرق التحميل وقتاً غير متوقع، يمكنك تنظيف الذاكرة والمتابعة فوراً:</p>
+          <button onclick="try{localStorage.clear();sessionStorage.clear();}catch(e){}window.location.reload();" style="padding: 10px 20px; background: #059669; color: #ffffff; border: none; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer;">
+            تحديث الذاكرة وبدء التشغيل الآن 🔄
+          </button>
+        </div>
+        <style>
+          @keyframes initial-spin { to { transform: rotate(360deg); } }
+        </style>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      setTimeout(function() {
+        var loader = document.getElementById('initial-app-loader');
+        var fallback = document.getElementById('initial-loader-fallback');
+        if (loader && fallback) {
+          fallback.style.display = 'block';
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>
+

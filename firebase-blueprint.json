@@ -1,0 +1,210 @@
+{
+  "entities": {
+    "project": {
+      "title": "Project",
+      "description": "Construction or business project entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "code": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 256 },
+        "status": { "type": "string", "maxLength": 64 },
+        "emails": { "type": "string", "maxLength": 1024 },
+        "budget": { "type": "number" },
+        "clientName": { "type": "string", "maxLength": 256 },
+        "location": { "type": "string", "maxLength": 256 },
+        "startDate": { "type": "string", "maxLength": 64 },
+        "endDate": { "type": "string", "maxLength": 64 },
+        "description": { "type": "string", "maxLength": 2048 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "name"]
+    },
+    "expense": {
+      "title": "Expense",
+      "description": "Site expense record with invoices and approvals",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "project": { "type": "string", "maxLength": 128 },
+        "amount": { "type": "number" },
+        "category": { "type": "string", "maxLength": 128 },
+        "description": { "type": "string", "maxLength": 2048 },
+        "date": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "maxLength": 64 },
+        "supervisor": { "type": "string", "maxLength": 128 },
+        "invoiceNumber": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "amount", "description"]
+    },
+    "custody": {
+      "title": "Custody",
+      "description": "Supervisor cash custody advance record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "supervisorId": { "type": "string", "maxLength": 128 },
+        "supervisorName": { "type": "string", "maxLength": 128 },
+        "allocatedAmount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "remainingAmount": { "type": "number" },
+        "status": { "type": "string", "maxLength": 64 },
+        "notes": { "type": "string", "maxLength": 2048 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id"]
+    },
+    "user": {
+      "title": "User",
+      "description": "Application user and team member profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "username": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 256 },
+        "role": { "type": "string", "maxLength": 128 },
+        "roleId": { "type": "string", "maxLength": 128 },
+        "phone": { "type": "string", "maxLength": 64 },
+        "updateMode": { "type": "string", "maxLength": 64 },
+        "avatar": { "type": "string", "maxLength": 1024 }
+      },
+      "required": ["id", "name"]
+    },
+    "role": {
+      "title": "CustomRole",
+      "description": "System or custom role definition with permissions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 256 },
+        "description": { "type": "string", "maxLength": 1024 },
+        "color": { "type": "string", "maxLength": 64 },
+        "badgeColor": { "type": "string", "maxLength": 256 }
+      },
+      "required": ["id", "name"]
+    },
+    "workflowStage": {
+      "title": "WorkflowStage",
+      "description": "Multi-tier approval workflow step",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "subtitle": { "type": "string", "maxLength": 256 },
+        "description": { "type": "string", "maxLength": 1024 },
+        "order": { "type": "number" },
+        "requiredRoleId": { "type": "string", "maxLength": 128 },
+        "requiredRoleName": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["id", "title"]
+    },
+    "appSettings": {
+      "title": "AppSettings",
+      "description": "General application settings",
+      "type": "object",
+      "properties": {
+        "organizationName": { "type": "string", "maxLength": 256 },
+        "defaultCurrency": { "type": "string", "maxLength": 32 },
+        "vatRate": { "type": "number" }
+      },
+      "required": ["organizationName"]
+    },
+    "supportTicket": {
+      "title": "SupportTicket",
+      "description": "Technical support and inquiry ticket",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "description": { "type": "string", "maxLength": 2048 },
+        "status": { "type": "string", "maxLength": 64 },
+        "priority": { "type": "string", "maxLength": 64 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "title"]
+    },
+    "notification": {
+      "title": "Notification",
+      "description": "System alerts and notifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "message": { "type": "string", "maxLength": 1024 },
+        "date": { "type": "string", "maxLength": 64 },
+        "type": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "title"]
+    },
+    "systemState": {
+      "title": "SystemState",
+      "description": "Comprehensive synchronized cloud state of the application",
+      "type": "object",
+      "properties": {
+        "app": { "type": "string", "maxLength": 128 },
+        "version": { "type": "string", "maxLength": 64 },
+        "lastSyncedAt": { "type": "string", "maxLength": 128 },
+        "syncedBy": { "type": "string", "maxLength": 128 },
+        "serverSavedAt": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["app", "version"]
+    },
+    "connectionTest": {
+      "title": "ConnectionTest",
+      "description": "Connectivity test document",
+      "type": "object",
+      "properties": {
+        "status": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["status"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "project",
+      "description": "All registered projects in the system"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "expense",
+      "description": "Expense records with attachments and approvals"
+    },
+    "/custodies/{custodyId}": {
+      "schema": "custody",
+      "description": "Custody allocation and clearance records"
+    },
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "Registered users and supervisors"
+    },
+    "/roles/{roleId}": {
+      "schema": "role",
+      "description": "Configured roles and permissions"
+    },
+    "/workflowStages/{stageId}": {
+      "schema": "workflowStage",
+      "description": "Approval workflow stages"
+    },
+    "/settings/{settingId}": {
+      "schema": "appSettings",
+      "description": "System settings and configuration"
+    },
+    "/tickets/{ticketId}": {
+      "schema": "supportTicket",
+      "description": "Support tickets"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "notification",
+      "description": "System notifications"
+    },
+    "/system_state/{stateId}": {
+      "schema": "systemState",
+      "description": "Central authoritative application state snapshot document"
+    },
+    "/test/{testId}": {
+      "schema": "connectionTest",
+      "description": "Firestore connection check test endpoint"
+    }
+  }
+}

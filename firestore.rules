@@ -1,0 +1,96 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == '2030m.mansour@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Test connectivity
+    match /test/{testId} {
+      allow read, write: if true;
+    }
+
+    // App state snapshot
+    match /system_state/{stateId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Projects
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Expenses
+    match /expenses/{expenseId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Custodies
+    match /custodies/{custodyId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Users
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Roles
+    match /roles/{roleId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Workflow stages
+    match /workflowStages/{stageId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Settings
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Support tickets
+    match /tickets/{ticketId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Notifications
+    match /notifications/{notificationId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Admins list
+    match /admins/{adminId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Global default catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
